@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "370996813394",
+    "project_id": "trabalhofinal-33a07",
+    "storage_bucket": "trabalhofinal-33a07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370996813394:android:787cae523e38fe477c098b",
+        "android_client_info": {
+          "package_name": "com.example.trabalho_final"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370996813394-6c3rnlcre5egpo9v4ojqq6rumeobint3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy_W5Bv-WaZWkREoUBHtfXnzvrY1vFBrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370996813394-6c3rnlcre5egpo9v4ojqq6rumeobint3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "370996813394-hc9tduhqq1nkvelor8lc32pagkj3abql.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.coltec.Trabalho-final"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
