@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cadastro"
-        android:textSize="50dp"
+        android:textSize="40dp"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/name"
-        android:id="@+id/txt_nome"
+        android:id="@+id/txt_cadastro_nome"
         android:layout_marginBottom="15dp"
         />
 
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_email"
-        android:id="@+id/txt_email"
+        android:id="@+id/txt_cadastro_email"
         android:layout_marginBottom="15dp"
         />
 
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_password"
-        android:id="@+id/txt_password"
+        android:id="@+id/txt_cadastro_password"
         android:layout_marginBottom="15dp"
 
         />
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:text="@string/cadastrar"
         android:id="@+id/btn_realizar_cadastro"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:layout_marginBottom="15dp"
         android:layout_gravity="center"
         />
