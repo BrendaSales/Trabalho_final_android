@@ -3,6 +3,7 @@ package com.example.trabalho_final.view;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -54,6 +55,8 @@ public class CadastroActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(CadastroActivity.this, "Cadastro realizado com sucesso", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(CadastroActivity.this, MainActivity.class);
+                                startActivity(intent);
                             }else{
                                 try {
                                     throw task.getException();

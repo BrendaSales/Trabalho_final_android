@@ -8,6 +8,11 @@
         <entry key="app/src/main/res/layout/activity_cadastro.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.11094224924012158" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2069402228976697" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.20018115942028986" />
+        <entry key="app/src/main/res/layout/fragment_horarios.xml" value="0.20018115942028986" />
+        <entry key="app/src/main/res/layout/fragment_perfil.xml" value="0.20018115942028986" />
+        <entry key="app/src/main/res/layout/fragment_provas_e_trabalhos.xml" value="0.20018115942028986" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
