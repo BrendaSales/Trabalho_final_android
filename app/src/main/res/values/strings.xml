@@ -15,6 +15,37 @@
     <string name="horarios">"Horários</string>
     <string name="provas_e_trabalhos">"Provas/Trabalhos"</string>
     <string name="perfil">"Perfil"</string>
+    <string name="cursando">"Cursando"</string>
+    <string name="historico">"Histórico"</string>
+    <string name="eventos_palestras">"Eventos/Palestras"</string>
+    <string name="notas">"Notas"</string>
+    <string name="cursos">"Cursos"</string>
+    <string name="adicionar_cursos">"Adicionar cursos"</string>
+    <string name="adicionar_novo_curso">"Adicionar um novo curso"</string>
+    <string name="periodo_ano_semestre">"Período/Ano/Semestre:"</string>
+
+    <string-array name="periodosArray">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
 
 
 </resources>

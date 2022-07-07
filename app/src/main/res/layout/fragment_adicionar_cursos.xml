@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.AdicionarCursosFragment"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adicionar_novo_curso"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/txt_adicionar_novo_curso"
+        android:layout_marginBottom="15dp"
+
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:layout_below="@+id/txt_adicionar_novo_curso"
+        android:id="@+id/txt_nome_do_curso"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/periodo_ano_semestre"
+        android:textSize="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txt_nome_do_curso"
+        android:layout_alignBottom="@+id/spinner_periodo"
+        android:layout_marginTop="10dp"/>
+
+    <Spinner
+        android:id="@+id/spinner_periodo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_nome_do_curso"
+        android:spinnerMode="dropdown"
+        android:layout_alignParentRight="true"
+
+
+        android:minHeight="48dp" />
+
+
+</RelativeLayout>
+</ScrollView>

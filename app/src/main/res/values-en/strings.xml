@@ -16,5 +16,15 @@
     <string name="horarios">"Schedules"</string>
     <string name="provas_e_trabalhos">"Tests/Assignments"</string>
     <string name="perfil">"Profile"</string>
+    <string name="cursando">"Studying"</string>
+    <string name="historico">"Records"</string>
+    <string name="eventos_palestras">"Events/Lectures"</string>
+    <string name="notas">"Grades"</string>
+    <string name="cursos">"Courses"</string>
+    <string name="adicionar_cursos">"Add courses"</string>
+    <string name="adicionar_novo_curso">"Add a new course"</string>
+    <string name="periodo_ano_semestre">"Period/Year/Semester:"</string>
+
+
 
 </resources>
