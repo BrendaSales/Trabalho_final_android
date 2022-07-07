@@ -12,4 +12,9 @@
     <string name="login_failed">"O login falhou"</string>
     <string name="cadastro">"Cadastro"</string>
     <string name="name">"Nome"</string>
+    <string name="horarios">"Horários</string>
+    <string name="provas_e_trabalhos">"Provas/Trabalhos"</string>
+    <string name="perfil">"Perfil"</string>
+
+
 </resources>

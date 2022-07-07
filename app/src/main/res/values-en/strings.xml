@@ -13,5 +13,8 @@
     <string name="cadastrar">Register</string>
     <string name="cadastro">"Registration"</string>
     <string name="name">"Name"</string>
+    <string name="horarios">"Schedules"</string>
+    <string name="provas_e_trabalhos">"Tests/Assignments"</string>
+    <string name="perfil">"Profile"</string>
 
 </resources>
