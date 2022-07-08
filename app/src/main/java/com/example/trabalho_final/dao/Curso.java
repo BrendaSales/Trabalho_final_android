@@ -8,23 +8,30 @@ public class Curso {
     private Integer idCurso;
     private String nomeCurso;
     private Usuario usuarioCurso;
-    private List<Periodo> periodoCurso = new ArrayList<>();
+    private List<Periodo> periodosCurso;
 
 
-    public Curso(String nome, Usuario usuario, Periodo periodo){
+    public Curso(String nome, Usuario usuario){
         this.nomeCurso = nome;
         this.usuarioCurso = usuario;
-        periodoCurso.add(periodo);
+        this.periodosCurso = new ArrayList<>();
     }
 
     public Curso(Integer idCurso,String nome, Usuario usuario){
         this.idCurso = idCurso;
         this.nomeCurso = nome;
         this.usuarioCurso = usuario;
+        this.periodosCurso = new ArrayList<>();
 
     }
     public Curso(Integer idCurso){
         this.idCurso = idCurso;
+    }
+
+    public void adicionarPeriodos(Periodo periodo) {
+
+        this.periodosCurso.add(periodo);
+
     }
 
 
@@ -52,11 +59,11 @@ public class Curso {
         this.usuarioCurso = usuario;
     }
 
-    public List<Periodo> getPeriodoCurso() {
-        return periodoCurso;
+    public List<Periodo> getPeriodosCurso() {
+        return periodosCurso;
     }
 
-    public void setPeriodoCurso(Periodo periodoCurso) {
-        this.periodoCurso.add(periodoCurso);
+    public void setPeriodosCurso(Periodo periodoCurso) {
+        this.periodosCurso.add(periodoCurso);
     }
 }

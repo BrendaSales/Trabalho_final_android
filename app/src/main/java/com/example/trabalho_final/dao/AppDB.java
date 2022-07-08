@@ -6,11 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AppDB extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "TrabalhoFinal.sqlite";
     private static final int DB_VERSION = 1;
 
-    public AppDB(Context context){
-        super(context, DB_NAME, null, DB_VERSION);
+    public AppDB(Context context, String nome){
+        super(context, nome, null, DB_VERSION);
     }
 
     @Override
@@ -23,13 +22,19 @@ public class AppDB extends SQLiteOpenHelper {
         db.execSQL(HorarioDAO.CREATE_SCRIPT);
         db.execSQL(ProfessorDAO.CREATE_SCRIPT);
         db.execSQL(TarefaDAO.CREATE_SCRIPT);
+
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //db.execSQL(UsuarioDAO.CREATE_SCRIPT);
-        //db.execSQL(CursoDAO.CREATE_SCRIPT);
-        //db.execSQL(MateriaDAO.CREATE_SCRIPT);
-        //db.execSQL(ProfessorDAO.CREATE_SCRIPT);
+        db.execSQL(UsuarioDAO.CREATE_SCRIPT);
+        db.execSQL(CursoDAO.CREATE_SCRIPT);
+        db.execSQL(PeriodoDAO.CREATE_SCRIPT);
+        db.execSQL(MateriaDAO.CREATE_SCRIPT);
+        db.execSQL(ProfessorDAO.CREATE_SCRIPT);
+        db.execSQL(HorarioDAO.CREATE_SCRIPT);
+        db.execSQL(ProfessorDAO.CREATE_SCRIPT);
+        db.execSQL(TarefaDAO.CREATE_SCRIPT);
     }
 }

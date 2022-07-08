@@ -5,12 +5,18 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HorarioDAO {
     public static final String CREATE_SCRIPT =
             "CREATE TABLE IF NOT EXISTS horarios (\n" +
                     "\tid INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                    "\tdia TEXT NOT NULL,\n" + "\thorainicio TEXT NOT NULL,\n" +
-                    "\n" + "\thorafim TEXT NOT NULL,\n" +
+                    "\tdia TEXT NOT NULL,\n" +
+                    "\thoraInicio TEXT NOT NULL,\n" +
+                    "\thoraFim TEXT NOT NULL,\n" +
+                    "\tmateria_id INTEGER NOT NULL,\n" +
+                    "\n" +
                     "\tFOREIGN KEY(materia_id) REFERENCES materias(id)\n" +
                     ");";
 
@@ -18,8 +24,8 @@ public class HorarioDAO {
     private static final String TABLE_NAME = "horarios";
     private static final String ID_COLUMN = "id";
     private static final String DIA_COLUMN = "dia";
-    private static final String HORAI_COLUMN = "horainicio";
-    private static final String HORAF_COLUMN = "horafim";
+    private static final String HORAI_COLUMN = "horaInicio";
+    private static final String HORAF_COLUMN = "horaFim";
     private static final String MATERIA_COLUMN = "materia_id";
 
     private AppDB appDB;
@@ -75,5 +81,34 @@ public class HorarioDAO {
             readDb.close();
         }
         return result;
+    }
+
+    @SuppressLint("Range")
+    public List<Horario> getAll() {
+        List<Horario> horarios = new ArrayList<>();
+        MateriaDAO materiaDAO = new MateriaDAO(this.appDB);
+        SQLiteDatabase readDB = this.appDB.getReadableDatabase();
+
+        try {
+            Cursor c = readDB.query(TABLE_NAME, null, null, null, null, null, null);
+            if (c.moveToFirst()) {
+                do {
+                    int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                    String dia = c.getString(c.getColumnIndex(DIA_COLUMN));
+                    String horaInicio = c.getString(c.getColumnIndex(HORAI_COLUMN));
+                    String horaFim = c.getString(c.getColumnIndex(HORAF_COLUMN));
+
+                    int materiaId = c.getInt(c.getColumnIndex(MATERIA_COLUMN));
+                    Materia materia = materiaDAO.getById(new Materia(materiaId));
+
+                    horarios.add(new Horario(id, dia, horaInicio, horaFim, materia));
+                } while (c.moveToNext());
+            }
+        } catch(Exception e) {
+            horarios = null;
+        } finally {
+            readDB.close();
+        }
+        return horarios;
     }
 }

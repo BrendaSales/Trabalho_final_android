@@ -5,12 +5,18 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TarefaDAO {
     public static final String CREATE_SCRIPT =
             "CREATE TABLE IF NOT EXISTS tarefas (\n" +
                     "\tid INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                    "\tnome TEXT NOT NULL,\n" + "\tdescricao TEXT NOT NULL,\n" +
-                    "\n" +"\tdata TEXT NOT NULL,\n" +
+                    "\tnome TEXT NOT NULL,\n" +
+                    "\tdescricao TEXT,\n" +
+                    "\tdata TEXT NOT NULL,\n" +
+                    "\tmateria_id INTEGER NOT NULL,\n" +
+                    "\n" +
                     "\tFOREIGN KEY(materia_id) REFERENCES materias(id)\n" +
                     ");";
 
@@ -19,6 +25,7 @@ public class TarefaDAO {
     private static final String ID_COLUMN = "id";
     private static final String NOME_COLUMN = "nome";
     private static final String DESCRICAO_COLUMN = "descricao";
+    private static final String DATA_COLUMN = "data";
     private static final String MATERIA_COLUMN = "materia_id";
 
     private AppDB appDB;
@@ -35,6 +42,7 @@ public class TarefaDAO {
             ContentValues contentValues = new ContentValues();
             contentValues.put(NOME_COLUMN, newTarefa.getNome());
             contentValues.put(DESCRICAO_COLUMN, newTarefa.getDescricaoTarefa());
+            contentValues.put(DATA_COLUMN, newTarefa.getData());
             contentValues.put(MATERIA_COLUMN, newTarefa.getMateriaTarefa().getIdMateria());
             writeDb.insert(TABLE_NAME, null, contentValues);
         } catch (Exception e) {
@@ -61,11 +69,12 @@ public class TarefaDAO {
                 int id = c.getInt(c.getColumnIndex(ID_COLUMN));
                 String nome = c.getString(c.getColumnIndex(NOME_COLUMN));
                 String descricao = c.getString(c.getColumnIndex(DESCRICAO_COLUMN));
+                String data = c.getString(c.getColumnIndex(DATA_COLUMN));
 
                 int materiaId = c.getInt(c.getColumnIndex(MATERIA_COLUMN));
                 Materia materia = materiaDAO.getById(new Materia(materiaId));
 
-                result = new Tarefa(id,nome,descricao,materia);
+                result = new Tarefa(id,nome,descricao,data,materia);
             }
         } catch (Exception e) {
             result = null;
@@ -73,6 +82,35 @@ public class TarefaDAO {
             readDb.close();
         }
         return result;
+    }
+
+    @SuppressLint("Range")
+    public List<Tarefa> getAll() {
+        List<Tarefa> tarefas = new ArrayList<>();
+        MateriaDAO materiaDAO = new MateriaDAO(this.appDB);
+        SQLiteDatabase readDB = this.appDB.getReadableDatabase();
+
+        try {
+            Cursor c = readDB.query(TABLE_NAME, null, null, null, null, null, null);
+            if (c.moveToFirst()) {
+                do {
+                    int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                    String nome = c.getString(c.getColumnIndex(NOME_COLUMN));
+                    String descricao = c.getString(c.getColumnIndex(DESCRICAO_COLUMN));
+                    String data = c.getString(c.getColumnIndex(DATA_COLUMN));
+
+                    int materiaId = c.getInt(c.getColumnIndex(MATERIA_COLUMN));
+                    Materia materia = materiaDAO.getById(new Materia(materiaId));
+
+                    tarefas.add(new Tarefa(id, nome, descricao, data, materia));
+                } while (c.moveToNext());
+            }
+        } catch(Exception e) {
+            tarefas = null;
+        } finally {
+            readDB.close();
+        }
+        return tarefas;
     }
 
 }

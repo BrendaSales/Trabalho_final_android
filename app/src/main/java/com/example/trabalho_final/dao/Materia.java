@@ -11,32 +11,57 @@ public class Materia {
     private String salaTeorica;
     private String cargaHoraria;
     private Periodo periodoMateria;
-    private List<Professor> professorMateria = new ArrayList<>();
+    private List<Professor> professoresMateria;
+    private List<Tarefa> tarefasMateria;
+    private List<Horario> horariosMateria;
 
 
-
-    public Materia (String nome, String salaPratica, String salaTeorica,
-                 String cargaHoraria, Periodo periodo, Professor professorMateria){
+    public Materia(String nome, String salaPratica, String salaTeorica,
+                   String cargaHoraria, Periodo periodo) {
         this.nomeMateria = nome;
         this.salaPratica = salaPratica;
         this.salaTeorica = salaTeorica;
-        this.cargaHoraria =cargaHoraria;
+        this.cargaHoraria = cargaHoraria;
         this.periodoMateria = periodo;
-        this.professorMateria.add(professorMateria);
+        this.professoresMateria = new ArrayList<>();
+        this.tarefasMateria = new ArrayList<>();
+        this.horariosMateria = new ArrayList<>();
+
     }
 
-    public Materia (Integer idMateria,String nome, String salaPratica, String salaTeorica,
-                    String cargaHoraria, Periodo periodo){
+    public Materia(Integer idMateria, String nome, String salaPratica, String salaTeorica,
+                   String cargaHoraria, Periodo periodo) {
         this.idMateria = idMateria;
         this.nomeMateria = nome;
         this.salaPratica = salaPratica;
         this.salaTeorica = salaTeorica;
-        this.cargaHoraria =cargaHoraria;
+        this.cargaHoraria = cargaHoraria;
         this.periodoMateria = periodo;
+        this.professoresMateria = new ArrayList<>();
+        this.tarefasMateria = new ArrayList<>();
+        this.horariosMateria = new ArrayList<>();
     }
 
-    public Materia (int idMateria){
-        this.idMateria=idMateria;
+    public Materia(int idMateria) {
+        this.idMateria = idMateria;
+    }
+
+    public void adicionarProfessor(Professor professor) {
+
+        this.professoresMateria.add(professor);
+
+    }
+
+    public void adicionarTarefa(Tarefa tarefa) {
+
+        this.tarefasMateria.add(tarefa);
+
+    }
+
+    public void adicionarHorario(Horario horario) {
+
+        this.horariosMateria.add(horario);
+
     }
 
     public Integer getIdMateria() {
@@ -87,12 +112,26 @@ public class Materia {
         return periodoMateria;
     }
 
-    public List<Professor> getProfessorMateria() {
-        return professorMateria;
+    public List<Professor> getProfessoresMateria() {
+        return professoresMateria;
     }
 
-    public void setProfessorMateria(Professor professorMateria) {
-        this.professorMateria.add(professorMateria);
+    public void setProfessoresMateria(List<Professor> professoresMateria) {
+        this.professoresMateria = professoresMateria;
+    }
+    public List<Tarefa> getTarefasMateria() {
+        return tarefasMateria;
+    }
+
+    public void setTarefasMateria(List<Tarefa> tarefasMateria) {
+        this.tarefasMateria = tarefasMateria;
+    }
+
+    public List<Horario> getHorariosMateria() {
+        return horariosMateria;
+    }
+
+    public void setHorariosMateria(List<Horario> horariosMateria) {
+        this.horariosMateria = horariosMateria;
     }
 }
-

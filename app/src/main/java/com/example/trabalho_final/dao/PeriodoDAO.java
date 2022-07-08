@@ -5,12 +5,16 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PeriodoDAO {
 
     public static final String CREATE_SCRIPT =
             "CREATE TABLE IF NOT EXISTS periodos (\n" +
                     "\tid INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                    "\tnome TEXT NOT NULL,\n" +
+                    "\tnumero INTEGER NOT NULL,\n" +
+                    "\tcurso_id INTEGER NOT NULL,\n" +
                     "\n" +
                     "\tFOREIGN KEY(curso_id) REFERENCES cursos(id)\n" +
                     ");";
@@ -18,7 +22,7 @@ public class PeriodoDAO {
 
     private static final String TABLE_NAME = "periodos";
     private static final String ID_COLUMN = "id";
-    private static final String NOME_COLUMN = "nome";
+    private static final String NUMERO_COLUMN = "numero";
     private static final String CURSOS_COLUMN = "curso_id";
 
     private AppDB appDB;
@@ -33,7 +37,7 @@ public class PeriodoDAO {
 
         try {
             ContentValues contentValues = new ContentValues();
-            contentValues.put(NOME_COLUMN, newPeriodo.getNomePeriodo());
+            contentValues.put(NUMERO_COLUMN, newPeriodo.getNumeroPeriodo());
             contentValues.put(CURSOS_COLUMN, newPeriodo.getCursoPeriodo().getId());
             writeDb.insert(TABLE_NAME, null, contentValues);
         } catch (Exception e) {
@@ -58,12 +62,12 @@ public class PeriodoDAO {
 
             if (c.moveToFirst()) {
                 int id = c.getInt(c.getColumnIndex(ID_COLUMN));
-                String name = c.getString(c.getColumnIndex(NOME_COLUMN));
+                int numero = c.getInt(c.getColumnIndex(NUMERO_COLUMN));
 
                 int cursoId = c.getInt(c.getColumnIndex(CURSOS_COLUMN));
                 Curso curso = cursoDAO.getById(new Curso(cursoId));
 
-                result = new Periodo(id,name,curso);
+                result = new Periodo(id,numero,curso);
             }
         } catch (Exception e) {
             result = null;
@@ -73,5 +77,32 @@ public class PeriodoDAO {
         return result;
     }
 
+    @SuppressLint("Range")
+    public List<Periodo> getAll() {
+        List<Periodo> periodos = new ArrayList<>();
+        CursoDAO cursoDAO = new CursoDAO(this.appDB);
+
+        SQLiteDatabase readDB = this.appDB.getReadableDatabase();
+
+        try {
+            Cursor c = readDB.query(TABLE_NAME, null, null, null, null, null, null);
+            if (c.moveToFirst()) {
+                do {
+                    int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                    int numero = c.getInt(c.getColumnIndex(NUMERO_COLUMN));
+
+                    int cursoId = c.getInt(c.getColumnIndex(CURSOS_COLUMN));
+                    Curso curso = cursoDAO.getById(new Curso(cursoId));
+
+                    periodos.add(new Periodo(id, numero, curso));
+                } while (c.moveToNext());
+            }
+        } catch(Exception e) {
+            periodos = null;
+        } finally {
+            readDB.close();
+        }
+        return periodos;
+    }
 
 }
