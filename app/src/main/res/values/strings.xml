@@ -22,7 +22,16 @@
     <string name="cursos">"Cursos"</string>
     <string name="adicionar_cursos">"Adicionar cursos"</string>
     <string name="adicionar_novo_curso">"Adicionar um novo curso"</string>
-    <string name="periodo_ano_semestre">"Período/Ano/Semestre:"</string>
+    <string name="periodo_ano_semestre_em_curso">"Período/Ano/Semestre em curso:"</string>
+    <string name="materias_em_curso">"Matérias em curso:"</string>
+    <string name="adicionar">"Adicionar"</string>
+    <string name="salvar">"Salvar"</string>
+    <string name="adicionar_nova_materia">"Adicionar nova matéria"</string>
+    <string name="salas">"Salas"</string>
+    <string name="salas_teoria">"Sala teoria"</string>
+    <string name="salas_pratica">"Sala prática"</string>
+    <string name="professores">"Professores"</string>
+
 
     <string-array name="periodosArray">
         <item>1</item>
@@ -45,6 +54,17 @@
         <item>18</item>
         <item>19</item>
         <item>20</item>
+    </string-array>
+
+    <string-array name="diasDaSemanaArray">
+        <item>Segunda</item>
+        <item>Terça</item>
+        <item>Quarta</item>
+        <item>Quinta</item>
+        <item>Sexta</item>
+        <item>Sábado</item>
+        <item>Domingo</item>
+
     </string-array>
 
 

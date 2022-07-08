@@ -23,7 +23,15 @@
     <string name="cursos">"Courses"</string>
     <string name="adicionar_cursos">"Add courses"</string>
     <string name="adicionar_novo_curso">"Add a new course"</string>
-    <string name="periodo_ano_semestre">"Period/Year/Semester:"</string>
+    <string name="periodo_ano_semestre_em_curso">"Ongoing period Period/Year/Semester:"</string>
+    <string name="materias_em_curso">"Ongoing subjects:"</string>
+    <string name="adicionar">"Add"</string>
+    <string name="salvar">"Save"</string>
+    <string name="adicionar_nova_materia">"Add new subject"</string>
+    <string name="salas">"Classrooms"</string>
+    <string name="salas_teoria">"Theory classroom"</string>
+    <string name="salas_pratica">"Practical classroom"</string>
+    <string name="professores">"Teachers"</string>
 
 
 

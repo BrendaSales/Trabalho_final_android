@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.trabalho_final.R;
 import com.example.trabalho_final.bll.LoginBLL;
+import com.example.trabalho_final.bll.UsuarioBLL;
+import com.example.trabalho_final.dao.AppDB;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
         EditText txtEmail = findViewById(R.id.txt_login_email);
         EditText txtSenha = findViewById(R.id.txt_login_password);
+
 
 
         LoginBLL loginBLL = new LoginBLL();
@@ -61,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, "Login feito com sucesso", Toast.LENGTH_LONG).show();
+
+
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                             } else {

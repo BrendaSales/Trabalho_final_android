@@ -1,5 +1,6 @@
 package com.example.trabalho_final.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.trabalho_final.R;
@@ -38,5 +40,15 @@ public class AdicionarCursosFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
         spinnerPeriodos.setAdapter(adapter);
+
+        Button btnSalvar = getView().findViewById(R.id.btn_salvar_curso);
+
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CursandoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

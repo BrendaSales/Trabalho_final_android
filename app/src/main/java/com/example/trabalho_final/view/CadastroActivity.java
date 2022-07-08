@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.trabalho_final.R;
 import com.example.trabalho_final.bll.CadastroBLL;
+import com.example.trabalho_final.bll.UsuarioBLL;
+import com.example.trabalho_final.dao.AppDB;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -54,9 +56,22 @@ public class CadastroActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                Toast.makeText(CadastroActivity.this, "Cadastro realizado com sucesso", Toast.LENGTH_LONG).show();
+                                Toast.makeText(CadastroActivity.this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
+
+                                AppDB appDB = new AppDB(getBaseContext(), email + "_DB");
+                                UsuarioBLL usuarioBLL = new UsuarioBLL(appDB);
+
+                                boolean wasCreated = usuarioBLL.create(nome, email);
+
+                                if (wasCreated) {
+                                    Toast.makeText(CadastroActivity.this, "Usuário cadastrado no banco!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(CadastroActivity.this, "Erro ao cadastrar o usuario no banco", Toast.LENGTH_SHORT).show();
+                                }
+
                                 Intent intent = new Intent(CadastroActivity.this, MainActivity.class);
                                 startActivity(intent);
+
                             }else{
                                 try {
                                     throw task.getException();
