@@ -5,11 +5,16 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProfessorDAO {
     public static final String CREATE_SCRIPT =
             "CREATE TABLE IF NOT EXISTS professores (\n" +
                     "\tid INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                    "\tnome TEXT NOT NULL,\n" + "\temail TEXT NOT NULL,\n" +
+                    "\tnome TEXT NOT NULL,\n" +
+                    "\temail TEXT,\n" +
+                    "\tmateria_id INTEGER NOT NULL,\n" +
                     "\n" +
                     "\tFOREIGN KEY(materia_id) REFERENCES materias(id)\n" +
                     ");";
@@ -65,7 +70,7 @@ public class ProfessorDAO {
                 int materiaId = c.getInt(c.getColumnIndex(MATERIA_COLUMN));
                 Materia materia = materiaDAO.getById(new Materia(materiaId));
 
-                result = new Professor(id,name,materia,email);
+                result = new Professor(id, name, email, materia);
             }
         } catch (Exception e) {
             result = null;
@@ -73,6 +78,34 @@ public class ProfessorDAO {
             readDb.close();
         }
         return result;
+    }
+
+    @SuppressLint("Range")
+    public List<Professor> getAll() {
+        List<Professor> professores = new ArrayList<>();
+        MateriaDAO materiaDAO = new MateriaDAO(this.appDB);
+        SQLiteDatabase readDB = this.appDB.getReadableDatabase();
+
+        try {
+            Cursor c = readDB.query(TABLE_NAME, null, null, null, null, null, null);
+            if (c.moveToFirst()) {
+                do {
+                    int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                    String nome = c.getString(c.getColumnIndex(NOME_COLUMN));
+                    String email = c.getString(c.getColumnIndex(EMAIL_COLUMN));
+
+                    int materiaId = c.getInt(c.getColumnIndex(MATERIA_COLUMN));
+                    Materia materia = materiaDAO.getById(new Materia(materiaId));
+
+                    professores.add(new Professor(id, nome, email, materia));
+                } while (c.moveToNext());
+            }
+        } catch(Exception e) {
+            professores = null;
+        } finally {
+            readDB.close();
+        }
+        return professores;
     }
 
 }

@@ -5,24 +5,30 @@ import java.util.List;
 
 public class Periodo {
     private Integer idPeriodo;
-    private String nomePeriodo;
+    private Integer numeroPeriodo;
     private Curso cursoPeriodo;
-    private List<Materia> periodoMateria = new ArrayList<>();
+    private List<Materia> materiasPeriodo;
 
-    public Periodo (String nome,Curso curso, Materia materia){
-        this.nomePeriodo = nome;
+    public Periodo (Integer nome,Curso curso){
+        this.numeroPeriodo = nome;
         this.cursoPeriodo = curso;
-        this.periodoMateria.add(materia);
+        this.materiasPeriodo = new ArrayList<>();
     }
 
-    public Periodo (Integer idPeriodo,String nome,Curso curso){
-        this.idPeriodo =idPeriodo;
-        this.nomePeriodo = nome;
+    public Periodo (Integer idPeriodo,Integer numero,Curso curso){
+        this.idPeriodo = idPeriodo;
+        this.numeroPeriodo = numero;
         this.cursoPeriodo = curso;
     }
 
-    public Periodo (Integer idPeriodo){
-        this.idPeriodo =idPeriodo;
+    public void adicionarMateria(Materia materia) {
+
+        this.materiasPeriodo.add(materia);
+
+    }
+
+    public Periodo(Integer idPeriodo){
+        this.idPeriodo = idPeriodo;
     }
 
     public Integer getIdPeriodo() {
@@ -33,12 +39,12 @@ public class Periodo {
         this.idPeriodo = idPeriodo;
     }
 
-    public String getNomePeriodo() {
-        return nomePeriodo;
+    public Integer getNumeroPeriodo() {
+        return numeroPeriodo;
     }
 
-    public void setNomePeriodo(String nomePeriodo) {
-        this.nomePeriodo = nomePeriodo;
+    public void setNumeroPeriodo(Integer numeroPeriodo) {
+        this.numeroPeriodo = numeroPeriodo;
     }
 
     public Curso getCursoPeriodo() {
@@ -49,11 +55,12 @@ public class Periodo {
         this.cursoPeriodo = cursoPeriodo;
     }
 
-    public void setPeriodoMateria(Materia periodoMateria) {
-        this.periodoMateria.add(periodoMateria);
+    public List<Materia> getMateriasPeriodo() {
+        return materiasPeriodo;
     }
 
-    public List<Materia> getPeriodoMateria() {
-        return periodoMateria;
+    public void setMateriasPeriodo(List<Materia> materiasPeriodo) {
+        this.materiasPeriodo = materiasPeriodo;
     }
+
 }

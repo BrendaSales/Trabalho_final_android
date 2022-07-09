@@ -5,6 +5,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class CursoDAO {
 
@@ -12,6 +15,7 @@ public class CursoDAO {
             "CREATE TABLE IF NOT EXISTS cursos (\n" +
                     "\tid INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                     "\tnome TEXT NOT NULL,\n" +
+                    "\tusuario_id INTEGER NOT NULL,\n" +
                     "\n" +
                     "\tFOREIGN KEY(usuario_id) REFERENCES usuarios(id)\n" +
                     ");";
@@ -59,12 +63,12 @@ public class CursoDAO {
 
             if (c.moveToFirst()) {
                 int id = c.getInt(c.getColumnIndex(ID_COLUMN));
-                String name = c.getString(c.getColumnIndex(NOME_COLUMN));
+                String nome = c.getString(c.getColumnIndex(NOME_COLUMN));
 
                 int usuarioId = c.getInt(c.getColumnIndex(USUARIO_COLUMN));
                 Usuario usuario = usuarioDAO.getById(new Usuario(usuarioId));
 
-                result = new Curso(id,name,usuario);
+                result = new Curso(id,nome,usuario);
             }
         } catch (Exception e) {
             result = null;
@@ -72,6 +76,34 @@ public class CursoDAO {
             readDb.close();
         }
         return result;
+    }
+
+    @SuppressLint("Range")
+    public List<Curso> getAll() {
+        List<Curso> cursos = new ArrayList<>();
+        UsuarioDAO usuarioDAO = new UsuarioDAO(this.appDB);
+        SQLiteDatabase readDB = this.appDB.getReadableDatabase();
+
+        try {
+            Cursor c = readDB.query(TABLE_NAME, null, null, null, null, null, null);
+            if (c.moveToFirst()) {
+                do {
+                    int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                    String nome = c.getString(c.getColumnIndex(NOME_COLUMN));
+
+                    int usuarioId = c.getInt(c.getColumnIndex(USUARIO_COLUMN));
+                    Usuario usuario = usuarioDAO.getById(new Usuario(usuarioId));
+
+
+                    cursos.add(new Curso(id, nome, usuario));
+                } while (c.moveToNext());
+            }
+        } catch(Exception e) {
+            cursos = null;
+        } finally {
+            readDB.close();
+        }
+        return cursos;
     }
 
 }

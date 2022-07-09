@@ -14,7 +14,10 @@
         android:theme="@style/Theme.Trabalho_final"
         tools:targetApi="31">
         <activity
-            android:name=".view.Provas_e_trabalhosFormulario"
+            android:name=".view.FormularioMateriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AdicionarMateriaActivity"
             android:exported="false" />
         <activity
             android:name=".view.CursandoActivity"

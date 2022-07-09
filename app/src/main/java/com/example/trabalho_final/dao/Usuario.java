@@ -8,21 +8,35 @@ public class Usuario {
     private Integer idUsuario;
     private String nome;
     private String email;
-    private List<Curso> cursoUsuario = new ArrayList<>();
+    private List<Curso> cursosUsuario;
 
-    public Usuario(String nome, String email, Curso curso){
+    public Usuario(String nome, String email){
         this.nome = nome;
         this.email = email;
-        cursoUsuario.add(curso);
+        this.cursosUsuario = new ArrayList<>();
     }
 
     public Usuario(Integer id,String nome, String email){
         this.idUsuario = id;
         this.nome = nome;
         this.email = email;
+        this.cursosUsuario = new ArrayList<>();
 
     }
 
+    public void adicionarCurso(Curso curso) {
+
+        this.cursosUsuario.add(curso);
+
+    }
+
+    public boolean isValid() {
+        if (this.nome == null || this.nome.equals(""))
+            return false;
+        if (this.email == null || this.email.equals(""))
+            return false;
+        return true;
+    }
     public Usuario(int usuarioId) {
         this.idUsuario = usuarioId;
     }
@@ -51,11 +65,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public List<Curso> getCurso() {
-        return cursoUsuario;
+    public List<Curso> getCursosUsuario() {
+        return cursosUsuario;
     }
 
-    public void setCurso(Curso curso) {
-        this.cursoUsuario.add(curso);
+    public void setCursosUsuario(Curso curso) {
+        this.cursosUsuario.add(curso);
     }
 }

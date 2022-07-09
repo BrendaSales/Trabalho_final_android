@@ -14,7 +14,7 @@ public class Tarefa {
         this.materiaTarefa = materia;
     }
 
-    public Tarefa (Integer idTarefa, String nome, String descricaoTarefa, Materia materia){
+    public Tarefa (Integer idTarefa, String nome, String descricaoTarefa, String data, Materia materia){
         this.idTarefa = idTarefa;
         this.nome = nome;
         this.descricaoTarefa = descricaoTarefa;

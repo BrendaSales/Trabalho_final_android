@@ -4,16 +4,16 @@ public class Professor {
 
     private Integer idProfessor;
     private String nomeProfessor;
-    private Materia materiaProfessor;
     private String email;
+    private Materia materiaProfessor;
 
-    public Professor (String nome, Materia materia, String email){
+    public Professor (String nome, String email, Materia materia){
         this.nomeProfessor = nome;
         this.materiaProfessor = materia;
         this.email = email;
     }
 
-    public Professor (Integer idProfessor, String nome, Materia materia, String email){
+    public Professor (Integer idProfessor, String nome, String email, Materia materia){
         this.idProfessor = idProfessor;
         this.nomeProfessor = nome;
         this.materiaProfessor = materia;

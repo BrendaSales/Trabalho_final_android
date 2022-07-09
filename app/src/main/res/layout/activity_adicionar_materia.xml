@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.AdicionarMateriaActivity"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/materias_em_curso"
+        android:id="@+id/txt_materias_em_curso"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adicionar"
+        android:layout_alignParentRight="true"
+        app:icon="@drawable/baseline_add_black_24"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:id="@+id/btn_adicionar_nova_materia"/>
+
+
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lista_de_materias"
+        android:layout_below="@+id/btn_adicionar_nova_materia"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/salvar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/btn_salvar_materias" />
+
+</RelativeLayout>
+
+
+
+
+</ScrollView>
