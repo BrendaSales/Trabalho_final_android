@@ -9,12 +9,13 @@
         <entry key="app/src/main/res/layout/activity_cursando.xml" value="0.228125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.11094224924012158" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2069402228976697" />
+        <entry key="app/src/main/res/layout/activity_provas_etrabalhos_formulario.xml" value="0.24189463019250254" />
         <entry key="app/src/main/res/layout/fragment_adicionar_cursos.xml" value="0.16621376811594202" />
         <entry key="app/src/main/res/layout/fragment_cursos.xml" value="0.16621376811594202" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.20018115942028986" />
         <entry key="app/src/main/res/layout/fragment_horarios.xml" value="0.20018115942028986" />
         <entry key="app/src/main/res/layout/fragment_perfil.xml" value="0.20018115942028986" />
-        <entry key="app/src/main/res/layout/fragment_provas_e_trabalhos.xml" value="0.20018115942028986" />
+        <entry key="app/src/main/res/layout/fragment_provas_e_trabalhos.xml" value="0.45" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/cursando_bottom_nav_menu.xml" value="0.22708333333333333" />
       </map>
