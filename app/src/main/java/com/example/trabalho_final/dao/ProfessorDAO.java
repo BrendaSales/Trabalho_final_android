@@ -80,6 +80,36 @@ public class ProfessorDAO {
         return result;
     }
 
+
+    @SuppressLint("Range")
+    public Professor getByName(Professor professor) {
+        Professor result = null;
+        MateriaDAO materiaDAO = new MateriaDAO(this.appDB);
+        SQLiteDatabase readDb = this.appDB.getReadableDatabase();
+
+        try {
+            String clause = NOME_COLUMN + "=?";
+            String[] params = { professor.getNomeProfessor() + "" };
+            Cursor c = readDb.query(TABLE_NAME, null, clause, params, null, null, null, null);
+
+            if (c.moveToFirst()) {
+                int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                String name = c.getString(c.getColumnIndex(NOME_COLUMN));
+                String email = c.getString(c.getColumnIndex(EMAIL_COLUMN));
+
+                int materiaId = c.getInt(c.getColumnIndex(MATERIA_COLUMN));
+                Materia materia = materiaDAO.getById(new Materia(materiaId));
+
+                result = new Professor(id, name, email, materia);
+            }
+        } catch (Exception e) {
+            result = null;
+        } finally {
+            readDb.close();
+        }
+        return result;
+    }
+
     @SuppressLint("Range")
     public List<Professor> getAll() {
         List<Professor> professores = new ArrayList<>();

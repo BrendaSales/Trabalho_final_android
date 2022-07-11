@@ -37,6 +37,8 @@
         <activity
             android:name=".view.CadastroActivity"
             android:exported="false" />
+        <activity android:name=".view.Provas_e_trabalhosFormularioActivity"
+             android:exported="false"/>
     </application>
 
 </manifest>

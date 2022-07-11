@@ -7,7 +7,7 @@ public class Tarefa {
     private String data;
     private Materia materiaTarefa;
 
-    public Tarefa (String nome, String descricaoTarefa, Materia materia){
+    public Tarefa (String nome, String descricaoTarefa, String data, Materia materia){
         this.nome = nome;
         this.descricaoTarefa = descricaoTarefa;
         this.data = data;
@@ -20,6 +20,16 @@ public class Tarefa {
         this.descricaoTarefa = descricaoTarefa;
         this.data = data;
         this.materiaTarefa = materia;
+    }
+
+    public boolean isValid(){
+        if (this.nome == null || this.nome.equals(""))
+            return false;
+        if (this.descricaoTarefa == null || this.descricaoTarefa.equals(""))
+            return false;
+        if (!this.materiaTarefa.isValid())
+            return false;
+        return true;
     }
 
     public Materia getMateriaTarefa() {

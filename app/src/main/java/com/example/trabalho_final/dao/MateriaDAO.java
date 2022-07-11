@@ -90,6 +90,37 @@ public class MateriaDAO {
     }
 
     @SuppressLint("Range")
+    public Materia getByName(Materia materia) {
+        Materia result = null;
+        PeriodoDAO periodoDAO = new PeriodoDAO(this.appDB);
+        SQLiteDatabase readDb = this.appDB.getReadableDatabase();
+
+        try {
+            String clause = NOME_COLUMN + "=?";
+            String[] params = { materia.getNomeMateria() + "" };
+            Cursor c = readDb.query(TABLE_NAME, null, clause, params, null, null, null, null);
+
+            if (c.moveToFirst()) {
+                int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                String nome = c.getString(c.getColumnIndex(NOME_COLUMN));
+                String cargaHoraria = c.getString(c.getColumnIndex(CARGAHORARIA_COLUMN));
+                String salaP = c.getString(c.getColumnIndex(SALAP_COLUMN));
+                String salaT = c.getString(c.getColumnIndex(SALAT_COLUMN));
+
+                int periodoId = c.getInt(c.getColumnIndex(PERIODO_COLUMN));
+                Periodo periodo = periodoDAO.getById(new Periodo(periodoId));
+
+                result = new Materia(id,nome,cargaHoraria,salaP,salaT,periodo);
+            }
+        } catch (Exception e) {
+            result = null;
+        } finally {
+            readDb.close();
+        }
+        return result;
+    }
+
+    @SuppressLint("Range")
     public List<Materia> getAll() {
         List<Materia> materias = new ArrayList<>();
         PeriodoDAO periodoDAO = new PeriodoDAO(this.appDB);

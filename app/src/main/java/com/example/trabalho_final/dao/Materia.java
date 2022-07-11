@@ -42,6 +42,19 @@ public class Materia {
         this.horariosMateria = new ArrayList<>();
     }
 
+    public Materia(Integer idMateria, String nomeMateria){
+        this.idMateria = idMateria;
+        this.nomeMateria = nomeMateria;
+    }
+
+    public Materia(String nomeMateria){
+        this(null,nomeMateria);
+    }
+
+    public boolean isValid(){
+        return nomeMateria !=null && !nomeMateria.equals("");
+    }
+
     public Materia(int idMateria) {
         this.idMateria = idMateria;
     }

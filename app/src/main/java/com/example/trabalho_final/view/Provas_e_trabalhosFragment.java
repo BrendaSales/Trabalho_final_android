@@ -13,15 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.trabalho_final.R;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Provas_e_trabalhosFragment extends Fragment {
 
-
-    public Provas_e_trabalhosFragment() {
-        // Required empty public constructor
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,15 +30,14 @@ public class Provas_e_trabalhosFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        FloatingActionButton btnPlus = this.getView().findViewById(R.id.btn_plus);
-
+        FloatingActionButton btnPlus = getView().findViewById(R.id.btn_plus);
         //inserir a lista de tarefas
 
 
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Provas_e_trabalhosFormulario.class);
+                Intent intent = new Intent(getActivity(), Provas_e_trabalhosFormularioActivity.class);
                 startActivity(intent);
             }
         });

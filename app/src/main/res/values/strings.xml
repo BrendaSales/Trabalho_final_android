@@ -33,6 +33,7 @@
     <string name="professores">"Professores"</string>
 
 
+
     <string-array name="periodosArray">
         <item>1</item>
         <item>2</item>
@@ -66,6 +67,11 @@
         <item>Domingo</item>
 
     </string-array>
+
+    <string name="adicionar_prova_trabalho">"Adicionar nova prova/trabalho:"</string>
+    <string name="descricao_tarefa">"Descrição"</string>
+    <string name="materia_tarefa">"Matéria"</string>
+    <string name="data_tarefa">"Data:"</string>
 
 
 </resources>

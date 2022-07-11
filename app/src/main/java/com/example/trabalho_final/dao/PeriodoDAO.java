@@ -77,6 +77,38 @@ public class PeriodoDAO {
         return result;
     }
 
+    //esse getByName retorna nome porque no periodo nao tem name
+    @SuppressLint("Range")
+    public Periodo getByNumero(Periodo periodo){
+        Periodo result = null;
+        CursoDAO cursoDAO = new CursoDAO(this.appDB);
+        SQLiteDatabase readDB = this.appDB.getReadableDatabase();
+
+        try {
+
+            String clause = NUMERO_COLUMN + "=?";
+            String[] values = { periodo.getNumeroPeriodo().toString() };
+            Cursor res = readDB.query(TABLE_NAME, null, clause, values, null, null, null);
+
+            if (res.moveToFirst()) {
+                int id = res.getInt(res.getColumnIndex(ID_COLUMN));
+                int numero = res.getInt(res.getColumnIndex(NUMERO_COLUMN));
+
+                int cursoId = res.getInt(res.getColumnIndex(CURSOS_COLUMN));
+                Curso curso = cursoDAO.getById(new Curso(cursoId));
+
+                result = new Periodo(id,numero,curso);
+
+            }
+        } catch(Exception e) {
+            result = null;
+        } finally {
+            readDB.close();
+        }
+
+        return  result;
+    }
+
     @SuppressLint("Range")
     public List<Periodo> getAll() {
         List<Periodo> periodos = new ArrayList<>();

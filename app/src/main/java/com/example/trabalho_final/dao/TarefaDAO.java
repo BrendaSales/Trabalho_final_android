@@ -85,6 +85,38 @@ public class TarefaDAO {
     }
 
     @SuppressLint("Range")
+    public Tarefa getByName(Tarefa tarefa){
+        Tarefa result = null;
+        MateriaDAO materiaDAO = new MateriaDAO(this.appDB);
+        SQLiteDatabase readDB = this.appDB.getReadableDatabase();
+
+        try {
+
+            String clause = NOME_COLUMN + "=?";
+            String[] values = {tarefa.getNome() };
+            Cursor res = readDB.query(TABLE_NAME, null, clause, values, null, null, null);
+
+            if (res.moveToFirst()) {
+                int id = res.getInt(res.getColumnIndex(ID_COLUMN));
+                String nome = res.getString(res.getColumnIndex(NOME_COLUMN));
+                String descricao = res.getString(res.getColumnIndex(DESCRICAO_COLUMN));
+                String data = res.getString(res.getColumnIndex(DATA_COLUMN));
+
+                int categoryId = res.getInt(res.getColumnIndex(MATERIA_COLUMN));
+                Materia category = materiaDAO.getById(new Materia(categoryId));
+
+                result = new Tarefa(id, nome, descricao, data ,category);
+            }
+        } catch(Exception e) {
+            result = null;
+        } finally {
+            readDB.close();
+        }
+
+        return  result;
+    }
+
+    @SuppressLint("Range")
     public List<Tarefa> getAll() {
         List<Tarefa> tarefas = new ArrayList<>();
         MateriaDAO materiaDAO = new MateriaDAO(this.appDB);

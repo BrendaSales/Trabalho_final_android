@@ -84,6 +84,37 @@ public class HorarioDAO {
     }
 
     @SuppressLint("Range")
+    public Horario getByDia(Horario horario) {
+        Horario result = null;
+        MateriaDAO materiaDAO = new MateriaDAO(this.appDB);
+        SQLiteDatabase readDb = this.appDB.getReadableDatabase();
+
+        try {
+            String clause = DIA_COLUMN + "=?";
+            String[] params = { horario.getDia() + "" };
+            Cursor c = readDb.query(TABLE_NAME, null, clause, params, null, null, null, null);
+
+            if (c.moveToFirst()) {
+                int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                String dia = c.getString(c.getColumnIndex(DIA_COLUMN));
+                String horaInicio = c.getString(c.getColumnIndex(HORAI_COLUMN));
+                String horaFim = c.getString(c.getColumnIndex(HORAF_COLUMN));
+
+                int materiaId = c.getInt(c.getColumnIndex(MATERIA_COLUMN));
+                Materia materia = materiaDAO.getById(new Materia(materiaId));
+
+                result = new Horario(id,dia,horaInicio,horaFim,materia);
+            }
+        } catch (Exception e) {
+            result = null;
+        } finally {
+            readDb.close();
+        }
+        return result;
+    }
+
+
+    @SuppressLint("Range")
     public List<Horario> getAll() {
         List<Horario> horarios = new ArrayList<>();
         MateriaDAO materiaDAO = new MateriaDAO(this.appDB);

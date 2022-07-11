@@ -1,19 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Provas_e_trabalhosFormulario">
+    android:orientation="vertical"
+    android:padding="25dp"
+    tools:context=".view.Provas_e_trabalhosFormularioActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adicionar_prova_trabalho"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:id="@+id/txt_adicionar_prova_trabalho"
+        android:layout_marginBottom="25dp"
+        android:paddingTop="15dp"
+        android:textAlignment="center"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:layout_marginBottom="25dp"
+        android:id="@+id/txt_nome_da_tarefa"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/descricao_tarefa"
+        android:layout_marginBottom="25dp"
+        android:layout_weight="1"
+        android:id="@+id/txt_descricao_da_tarefa"
+        />
 
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/materia_tarefa"
+        android:layout_marginBottom="25dp"
+        android:id="@+id/txt_materia_da_tarefa"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/data_tarefa"
+        android:layout_marginBottom="25dp"
+        android:id="@+id/txt_data_da_tarefa" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="25dp"
         android:src="@drawable/ic_save" />
 
-</RelativeLayout>
+</LinearLayout>

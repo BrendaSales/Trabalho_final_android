@@ -79,6 +79,34 @@ public class CursoDAO {
     }
 
     @SuppressLint("Range")
+    public Curso getByName(Curso curso) {
+        Curso result = null;
+        UsuarioDAO usuarioDAO = new UsuarioDAO(this.appDB);
+        SQLiteDatabase readDb = this.appDB.getReadableDatabase();
+
+        try {
+            String clause = NOME_COLUMN + "=?";
+            String[] params = { curso.getNomeCurso() + "" };
+            Cursor c = readDb.query(TABLE_NAME, null, clause, params, null, null, null, null);
+
+            if (c.moveToFirst()) {
+                int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                String nome = c.getString(c.getColumnIndex(NOME_COLUMN));
+
+                int usuarioId = c.getInt(c.getColumnIndex(USUARIO_COLUMN));
+                Usuario usuario = usuarioDAO.getById(new Usuario(usuarioId));
+
+                result = new Curso(id,nome,usuario);
+            }
+        } catch (Exception e) {
+            result = null;
+        } finally {
+            readDb.close();
+        }
+        return result;
+    }
+
+    @SuppressLint("Range")
     public List<Curso> getAll() {
         List<Curso> cursos = new ArrayList<>();
         UsuarioDAO usuarioDAO = new UsuarioDAO(this.appDB);
