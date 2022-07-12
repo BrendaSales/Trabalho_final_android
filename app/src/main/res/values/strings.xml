@@ -31,7 +31,7 @@
     <string name="salas_teoria">"Sala teoria"</string>
     <string name="salas_pratica">"Sala prática"</string>
     <string name="professores">"Professores"</string>
-
+    <string name="sair">"Sair"</string>
 
 
     <string-array name="periodosArray">

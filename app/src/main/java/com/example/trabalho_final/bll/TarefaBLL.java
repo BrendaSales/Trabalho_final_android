@@ -9,6 +9,7 @@ import com.example.trabalho_final.dao.TarefaDAO;
 import java.util.List;
 
 public class TarefaBLL {
+
     private AppDB appDB;
 
     public TarefaBLL(AppDB appDB){
@@ -22,8 +23,7 @@ public class TarefaBLL {
         Materia materia = materiaDAO.getByName(new Materia(materiaNome));
         if (materia == null) {
             //ver como será o tratamento caso a materia não tenha sido cadastrada nesse caso ele cria a materia
-           materiaDAO.create(new Materia(materiaNome));
-            materia = materiaDAO.getByName(new Materia(materiaNome));
+           return  false;
         }
 
         Tarefa novaTarefa = new Tarefa(nome, descricao, data, materia);

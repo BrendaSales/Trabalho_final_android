@@ -1,6 +1,8 @@
 package com.example.trabalho_final.bll;
 
 import com.example.trabalho_final.dao.AppDB;
+import com.example.trabalho_final.dao.Tarefa;
+import com.example.trabalho_final.dao.TarefaDAO;
 import com.example.trabalho_final.dao.Usuario;
 import com.example.trabalho_final.dao.UsuarioDAO;
 
@@ -30,6 +32,14 @@ public class UsuarioBLL {
         return result;
     }
 
+    public Usuario getUsuario(String email) {
+
+        UsuarioDAO usuarioDAO = new UsuarioDAO(this.appDB);
+        Usuario usuario = new Usuario(email);
+
+        return usuarioDAO.getByEmail(usuario);
+    }
+
     public List<Usuario> getAll() {
         List<Usuario> usuarios;
 
@@ -38,4 +48,5 @@ public class UsuarioBLL {
 
         return usuarios;
     }
+
 }

@@ -17,6 +17,11 @@ public class Curso {
         this.periodosCurso = new ArrayList<>();
     }
 
+    public Curso(String nome){
+        this.nomeCurso = nome;
+        this.periodosCurso = new ArrayList<>();
+    }
+
     public Curso(Integer idCurso,String nome, Usuario usuario){
         this.idCurso = idCurso;
         this.nomeCurso = nome;
@@ -34,7 +39,10 @@ public class Curso {
 
     }
 
-
+    public boolean isValid(){
+        return nomeCurso !=null && !nomeCurso.equals("");
+    }
+    
     public Integer getId() {
         return idCurso;
     }

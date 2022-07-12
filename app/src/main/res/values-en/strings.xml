@@ -32,7 +32,7 @@
     <string name="salas_teoria">"Theory classroom"</string>
     <string name="salas_pratica">"Practical classroom"</string>
     <string name="professores">"Teachers"</string>
-
+    <string name="sair">"Logout"</string>
     <string name="adicionar_prova_trabalho">"Add new exam/assignment:"</string>
     <string name="descricao_tarefa">"Description"</string>
     <string name="materia_tarefa">"Subject"</string>

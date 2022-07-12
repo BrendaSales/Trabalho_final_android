@@ -16,6 +16,11 @@ public class Usuario {
         this.cursosUsuario = new ArrayList<>();
     }
 
+    public Usuario(String email){
+        this.email = email;
+        this.cursosUsuario = new ArrayList<>();
+    }
+
     public Usuario(Integer id,String nome, String email){
         this.idUsuario = id;
         this.nome = nome;

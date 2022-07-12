@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,12 +19,15 @@ import com.example.trabalho_final.dao.AppDB;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class CadastroActivity extends AppCompatActivity {
     private boolean respostaValidacao = false;
+    private static final String APP_PREF_ID = "MeuAppPrefID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class CadastroActivity extends AppCompatActivity {
 
                 respostaValidacao = cadastroBLL.validacaoCampos(nome, senha, email);
 
+                SharedPreferences pref = CadastroActivity.this.getBaseContext().getSharedPreferences(APP_PREF_ID, 0);
+
                 if (respostaValidacao == false) {
                     Toast.makeText(CadastroActivity.this, "Preencha todos os campos!!", Toast.LENGTH_LONG).show();
                 } else {
@@ -56,6 +62,7 @@ public class CadastroActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
+
                                 Toast.makeText(CadastroActivity.this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
 
                                 AppDB appDB = new AppDB(getBaseContext(), email + "_DB");
@@ -68,6 +75,10 @@ public class CadastroActivity extends AppCompatActivity {
                                 } else {
                                     Toast.makeText(CadastroActivity.this, "Erro ao cadastrar o usuario no banco", Toast.LENGTH_SHORT).show();
                                 }
+
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.putString("email", email);
+                                editor.commit();
 
                                 Intent intent = new Intent(CadastroActivity.this, MainActivity.class);
                                 startActivity(intent);

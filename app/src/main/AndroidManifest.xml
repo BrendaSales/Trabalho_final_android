@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Trabalho_final"
         tools:targetApi="31">
+
         <activity
             android:name=".view.FormularioMateriaActivity"
             android:exported="false" />
@@ -37,8 +38,9 @@
         <activity
             android:name=".view.CadastroActivity"
             android:exported="false" />
-        <activity android:name=".view.Provas_e_trabalhosFormularioActivity"
-             android:exported="false"/>
+        <activity
+            android:name=".view.Provas_e_trabalhosFormularioActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

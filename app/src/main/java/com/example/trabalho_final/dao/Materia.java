@@ -11,9 +11,9 @@ public class Materia {
     private String salaTeorica;
     private String cargaHoraria;
     private Periodo periodoMateria;
-    private List<Professor> professoresMateria;
+    //private List<Professor> professoresMateria;
     private List<Tarefa> tarefasMateria;
-    private List<Horario> horariosMateria;
+    //private List<Horario> horariosMateria;
 
 
     public Materia(String nome, String salaPratica, String salaTeorica,
@@ -23,9 +23,9 @@ public class Materia {
         this.salaTeorica = salaTeorica;
         this.cargaHoraria = cargaHoraria;
         this.periodoMateria = periodo;
-        this.professoresMateria = new ArrayList<>();
+        //this.professoresMateria = new ArrayList<>();
         this.tarefasMateria = new ArrayList<>();
-        this.horariosMateria = new ArrayList<>();
+        //this.horariosMateria = new ArrayList<>();
 
     }
 
@@ -37,9 +37,9 @@ public class Materia {
         this.salaTeorica = salaTeorica;
         this.cargaHoraria = cargaHoraria;
         this.periodoMateria = periodo;
-        this.professoresMateria = new ArrayList<>();
+        //this.professoresMateria = new ArrayList<>();
         this.tarefasMateria = new ArrayList<>();
-        this.horariosMateria = new ArrayList<>();
+        //this.horariosMateria = new ArrayList<>();
     }
 
     public Materia(Integer idMateria, String nomeMateria){
@@ -59,11 +59,11 @@ public class Materia {
         this.idMateria = idMateria;
     }
 
-    public void adicionarProfessor(Professor professor) {
+    //public void adicionarProfessor(Professor professor) {
 
-        this.professoresMateria.add(professor);
-
-    }
+//        this.professoresMateria.add(professor);
+//
+//    }
 
     public void adicionarTarefa(Tarefa tarefa) {
 
@@ -71,11 +71,11 @@ public class Materia {
 
     }
 
-    public void adicionarHorario(Horario horario) {
-
-        this.horariosMateria.add(horario);
-
-    }
+//    public void adicionarHorario(Horario horario) {
+//
+//        this.horariosMateria.add(horario);
+//
+//    }
 
     public Integer getIdMateria() {
         return idMateria;
@@ -125,13 +125,13 @@ public class Materia {
         return periodoMateria;
     }
 
-    public List<Professor> getProfessoresMateria() {
-        return professoresMateria;
-    }
-
-    public void setProfessoresMateria(List<Professor> professoresMateria) {
-        this.professoresMateria = professoresMateria;
-    }
+//    public List<Professor> getProfessoresMateria() {
+//        return professoresMateria;
+//    }
+//
+//    public void setProfessoresMateria(List<Professor> professoresMateria) {
+//        this.professoresMateria = professoresMateria;
+//    }
     public List<Tarefa> getTarefasMateria() {
         return tarefasMateria;
     }
@@ -140,11 +140,11 @@ public class Materia {
         this.tarefasMateria = tarefasMateria;
     }
 
-    public List<Horario> getHorariosMateria() {
-        return horariosMateria;
-    }
-
-    public void setHorariosMateria(List<Horario> horariosMateria) {
-        this.horariosMateria = horariosMateria;
-    }
+//    public List<Horario> getHorariosMateria() {
+//        return horariosMateria;
+//    }
+//
+//    public void setHorariosMateria(List<Horario> horariosMateria) {
+//        this.horariosMateria = horariosMateria;
+//    }
 }

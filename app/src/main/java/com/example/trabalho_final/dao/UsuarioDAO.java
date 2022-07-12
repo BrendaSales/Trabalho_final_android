@@ -14,7 +14,7 @@ public class UsuarioDAO {
     public static final String CREATE_SCRIPT =
             "CREATE TABLE IF NOT EXISTS usuarios (\n" +
                     "\tid INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                    "\tnome TEXT NOT NULL\n" +
+                    "\tnome TEXT NOT NULL,\n" +
                     "\temail TEXT NOT NULL UNIQUE\n"+
                     ");";
 
@@ -63,6 +63,33 @@ public class UsuarioDAO {
                 String email = c.getString(c.getColumnIndex(EMAIL_COLUMN));
 
                 result = new Usuario (id, nome, email);
+            }
+        } catch (Exception e) {
+            result = null;
+        } finally {
+            readDb.close();
+        }
+        return result;
+    }
+
+    @SuppressLint("Range")
+    public Usuario getByEmail(Usuario usuario) {
+        Usuario result = null;
+
+        SQLiteDatabase readDb = this.appDB.getReadableDatabase();
+
+        try {
+            String clause = EMAIL_COLUMN + "=?";
+            String[] params = {usuario.getEmail() + "" };
+            Cursor c = readDb.query(TABLE_NAME, null, clause, params, null, null, null, null);
+
+            if (c.moveToFirst()) {
+                int id = c.getInt(c.getColumnIndex(ID_COLUMN));
+                String nome = c.getString(c.getColumnIndex(NOME_COLUMN));
+                String email = c.getString(c.getColumnIndex(EMAIL_COLUMN));
+
+
+                result = new Usuario(id,nome,email);
             }
         } catch (Exception e) {
             result = null;

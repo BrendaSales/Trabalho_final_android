@@ -14,16 +14,14 @@ public class AppDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //db.execSQL(UsuarioDAO.CREATE_SCRIPT);
-       // db.execSQL(CursoDAO.CREATE_SCRIPT);
-       // db.execSQL(PeriodoDAO.CREATE_SCRIPT);
+        db.execSQL(UsuarioDAO.CREATE_SCRIPT);
+        db.execSQL(CursoDAO.CREATE_SCRIPT);
+        db.execSQL(PeriodoDAO.CREATE_SCRIPT);
         db.execSQL(MateriaDAO.CREATE_SCRIPT);
-       // db.execSQL(ProfessorDAO.CREATE_SCRIPT);
-       // db.execSQL(HorarioDAO.CREATE_SCRIPT);
-       // db.execSQL(ProfessorDAO.CREATE_SCRIPT);
+        db.execSQL(ProfessorDAO.CREATE_SCRIPT);
+        db.execSQL(HorarioDAO.CREATE_SCRIPT);
+        db.execSQL(ProfessorDAO.CREATE_SCRIPT);
         db.execSQL(TarefaDAO.CREATE_SCRIPT);
-
-
     }
 
     @Override

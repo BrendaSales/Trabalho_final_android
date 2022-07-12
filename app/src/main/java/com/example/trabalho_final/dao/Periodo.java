@@ -27,6 +27,10 @@ public class Periodo {
 
     }
 
+    public boolean isValid(){
+        return numeroPeriodo !=null && numeroPeriodo > 0;
+    }
+
     public Periodo(Integer idPeriodo){
         this.idPeriodo = idPeriodo;
     }
