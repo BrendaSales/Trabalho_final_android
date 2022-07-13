@@ -47,6 +47,11 @@ public class Materia {
         this.nomeMateria = nomeMateria;
     }
 
+    public Materia(String nomeMateria, Periodo periodo){
+        this.nomeMateria = nomeMateria;
+        this.periodoMateria = periodo;
+    }
+
     public Materia(String nomeMateria){
         this(null,nomeMateria);
     }

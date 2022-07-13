@@ -40,7 +40,7 @@ public class PeriodoBLL {
 
         Periodo periodo = periodoDAO.getByNumero(novoPeriodo);
         if (periodo != null) {
-            Log.d("PERIODO", "Não conseguiu achar o periodo");
+            Log.d("PERIODO", "Já existe periodo com esse numero");
             return false;
         }
 
