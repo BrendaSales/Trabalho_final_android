@@ -17,9 +17,9 @@ public class MateriaDAO {
                     "\tcargaHoraria TEXT,\n"+
                     "\tsalaP TEXT,\n" +
                     "\tsalaT TEXT,\n"+
-                    "\tperiodo_id INTEGER NOT NULL,\n" +
+                    "\tperiodo_numero INTEGER NOT NULL,\n" +
                     "\n" +
-                    "\tFOREIGN KEY(periodo_id) REFERENCES periodos(id)\n" +
+                    "\tFOREIGN KEY(periodo_numero) REFERENCES periodos(numero)\n" +
                     ");";
 
 
@@ -29,7 +29,7 @@ public class MateriaDAO {
     private static final String CARGAHORARIA_COLUMN = "cargaHoraria";
     private static final String SALAP_COLUMN = "salaP";
     private static final String SALAT_COLUMN = "salaT";
-    private static final String PERIODO_COLUMN = "periodo_id";
+    private static final String PERIODO_COLUMN = "periodo_numero";
 
     private AppDB appDB;
 
@@ -76,8 +76,8 @@ public class MateriaDAO {
                 String salaP = c.getString(c.getColumnIndex(SALAP_COLUMN));
                 String salaT = c.getString(c.getColumnIndex(SALAT_COLUMN));
 
-                int periodoId = c.getInt(c.getColumnIndex(PERIODO_COLUMN));
-                Periodo periodo = periodoDAO.getById(new Periodo(periodoId));
+                int periodoNumero = c.getInt(c.getColumnIndex(PERIODO_COLUMN));
+                Periodo periodo = periodoDAO.getByNumero(new Periodo(periodoNumero));
 
                 result = new Materia(id,nome,cargaHoraria,salaP,salaT,periodo);
             }
@@ -107,8 +107,8 @@ public class MateriaDAO {
                 String salaP = c.getString(c.getColumnIndex(SALAP_COLUMN));
                 String salaT = c.getString(c.getColumnIndex(SALAT_COLUMN));
 
-                int periodoId = c.getInt(c.getColumnIndex(PERIODO_COLUMN));
-                Periodo periodo = periodoDAO.getById(new Periodo(periodoId));
+                int periodoNumero = c.getInt(c.getColumnIndex(PERIODO_COLUMN));
+                Periodo periodo = periodoDAO.getByNumero(new Periodo(periodoNumero));
 
                 result = new Materia(id,nome,cargaHoraria,salaP,salaT,periodo);
             }
@@ -136,8 +136,8 @@ public class MateriaDAO {
                     String salaP = c.getString(c.getColumnIndex(SALAP_COLUMN));
                     String salaT = c.getString(c.getColumnIndex(SALAT_COLUMN));
 
-                    int periodoId = c.getInt(c.getColumnIndex(PERIODO_COLUMN));
-                    Periodo periodo = periodoDAO.getById(new Periodo(periodoId));
+                    int periodoNumero = c.getInt(c.getColumnIndex(PERIODO_COLUMN));
+                    Periodo periodo = periodoDAO.getByNumero(new Periodo(periodoNumero));
 
                     materias.add(new Materia(id, nome, cargaHoraria, salaP, salaT, periodo));
                 } while (c.moveToNext());

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="6dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_nome_do_curso"
+            android:layout_margin="10dp"
+            android:text="@string/nome_do_curso"
+            android:layout_alignParentLeft="true"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_periodo_exibido"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:text="0"
+            android:textSize="16dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_card_periodo_"
+            android:text="@string/periodo_ano_semestre_em_curso"
+            android:layout_toLeftOf="@+id/card_periodo_exibido"
+            android:layout_toRightOf="@+id/card_nome_do_curso"
+            android:layout_margin="10dp"
+            android:textSize="16dp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_card_materias"
+            android:layout_below="@+id/card_periodo_exibido"
+            android:layout_margin="10dp"
+            android:text="@string/materias"
+           />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_card_editar_curso"
+            android:layout_below="@id/card_periodo_exibido"
+            android:layout_toRightOf="@+id/btn_card_materias"
+            android:layout_margin="10dp"
+            android:text="@string/editar_curso"
+            />
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
