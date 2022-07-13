@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.trabalho_final.R;
@@ -16,16 +17,13 @@ import com.example.trabalho_final.dao.Usuario;
 
 import java.util.List;
 
-public class CursoAdapter {
+public class CursoAdapter extends BaseAdapter {
     private Context context;
     private List<Curso> cursos;
 
-    private static final String APP_PREF_ID = "MeuAppPrefID";
-    SharedPreferences pref = new LoginActivity().getBaseContext().getSharedPreferences(APP_PREF_ID, 0);
-    String email = pref.getString("email", "");
 
     //fiz essa modificação para pegar o banco da pessoa que esta logada
-    public CursoAdapter(Context context){
+    public CursoAdapter(Context context,String email){
         AppDB appDB = new AppDB(context,email);
         CursoBLL cursoBLL = new CursoBLL(appDB);
 
@@ -53,12 +51,15 @@ public class CursoAdapter {
         Curso curso = this.cursos.get(position);
 
         View cursoView = LayoutInflater.from(this.context).inflate(R.layout.adapter_curso, parent, false);
-        TextView cursoNome = cursoView.findViewById(R.id.adp_curso_name);
-        //TextView usuarioCurso = cursoView.findViewById(R.id.adp_usuario_curso);
+        TextView cardViewNome = cursoView.findViewById(R.id.card_nome_do_curso);
+        TextView cardViewNomePeriodo = cursoView.findViewById(R.id.txt_card_periodo_);
+        TextView cardViewPeriodoExibido = cursoView.findViewById(R.id.card_periodo_exibido);
 
-        cursoNome.setText(curso.getNomeCurso());
-        //usuarioCurso.setText(curso.getUsuarioId().getNome());
-
+        cardViewNome.setText(curso.getNomeCurso());
+        //aqui tinha que pegar o nome ultmo item da lista periodos
+        cardViewNomePeriodo.setText(curso.getPeriodosCurso().get);
+        //aqui tinha que pergar o numero do utimo item da lista periodo
+        cardViewPeriodoExibido.setText(curso.getPeriodosCurso().get);
         return cursoView;
     }
 
@@ -70,5 +71,3 @@ public class CursoAdapter {
     }
 }
 
-
-}

@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="15dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/adp_curso_name"
-        android:layout_centerVertical="true"
-        android:textSize="20dp"
-        android:text="CURSO_NOME" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tasks_list"
+        tools:listitem="@layout/cards_cursos_layout"
+        />
 
 </LinearLayout>

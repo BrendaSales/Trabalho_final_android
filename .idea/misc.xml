@@ -14,7 +14,8 @@
         <entry key="app/src/main/res/layout/activity_provas_e_trabalhos_formulario.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_provas_etrabalhos_formulario.xml" value="0.24189463019250254" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.228125" />
-        <entry key="app/src/main/res/layout/cards_cursos_layout.xml" value="0.20018115942028986" />
+        <entry key="app/src/main/res/layout/adapter_curso.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/cards_cursos_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_adicionar_cursos.xml" value="0.16621376811594202" />
         <entry key="app/src/main/res/layout/fragment_cursos.xml" value="0.16621376811594202" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.20018115942028986" />
