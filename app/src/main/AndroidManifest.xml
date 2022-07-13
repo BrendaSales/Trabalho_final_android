@@ -41,6 +41,10 @@
         <activity
             android:name=".view.Provas_e_trabalhosFormularioActivity"
             android:exported="false" />
+        <activity
+            android:name=".view.CursoAdapter"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
     </application>
 
 </manifest>
