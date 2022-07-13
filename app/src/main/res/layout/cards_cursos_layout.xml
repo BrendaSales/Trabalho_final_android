@@ -6,7 +6,8 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="6dp"
     app:cardUseCompatPadding="true"
-    app:cardPreventCornerOverlap="true">
+    app:cardPreventCornerOverlap="true"
+    android:id="@+id/cardView">
 
     <RelativeLayout
         android:layout_width="match_parent"
