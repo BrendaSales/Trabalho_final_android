@@ -1,5 +1,7 @@
 package com.example.trabalho_final.bll;
 
+import android.util.Log;
+
 import com.example.trabalho_final.dao.AppDB;
 import com.example.trabalho_final.dao.Curso;
 import com.example.trabalho_final.dao.CursoDAO;
@@ -24,28 +26,34 @@ public class PeriodoBLL {
 
         Curso curso = cursoDAO.getByName(new Curso(nomeDoCurso));
         if (curso == null) {
-            return  false;
+            Log.d("PERIODO", "Não conseguiu achar o curso pelo nome");
+            return false;
         }
 
-        Periodo novoPeriodo = new Periodo(numeroPeriodo);
 
-        if (!novoPeriodo.isValid())
+        Periodo novoPeriodo = new Periodo(numeroPeriodo, curso);
+
+        if (!novoPeriodo.isValid()) {
+            Log.d("PERIODO", "Periodo nao e valido");
             return false;
+        }
 
         Periodo periodo = periodoDAO.getByNumero(novoPeriodo);
-        if (curso != null)
+        if (periodo != null) {
+            Log.d("PERIODO", "Não conseguiu achar o periodo");
             return false;
+        }
 
         boolean result = periodoDAO.create(novoPeriodo);
         return result;
     }
 
-    public Curso getCurso(String nome) {
+    public Periodo getPeriodo(Integer numeroPeriodo) {
 
-        CursoDAO cursoDAO = new CursoDAO(this.appDB);
-        Curso curso = new Curso(nome);
+        PeriodoDAO periodoDAO = new PeriodoDAO(this.appDB);
+        Periodo periodo = new Periodo(numeroPeriodo);
 
-        return cursoDAO.getByName(curso);
+        return periodoDAO.getByNumero(periodo);
     }
 
     public List<Periodo> getAll() {

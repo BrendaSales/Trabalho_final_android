@@ -87,7 +87,7 @@ public class PeriodoDAO {
         try {
 
             String clause = NUMERO_COLUMN + "=?";
-            String[] values = { periodo.getNumeroPeriodo().toString() };
+            String[] values = { periodo.getNumeroPeriodo() + "" };
             Cursor res = readDB.query(TABLE_NAME, null, clause, values, null, null, null);
 
             if (res.moveToFirst()) {

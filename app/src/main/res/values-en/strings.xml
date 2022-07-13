@@ -37,5 +37,9 @@
     <string name="descricao_tarefa">"Description"</string>
     <string name="materia_tarefa">"Subject"</string>
     <string name="data_tarefa">"Date:"</string>
+    <string name="nome_do_curso">"Course name"</string>
+    <string name="materias">"Subjects"</string>
+    <string name="editar_curso">"Edit Course"</string>
+    <string name="adicionar_periodo">"Add Period"</string>
 
 </resources>

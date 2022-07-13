@@ -19,6 +19,7 @@ public class Periodo {
         this.idPeriodo = idPeriodo;
         this.numeroPeriodo = numero;
         this.cursoPeriodo = curso;
+        this.materiasPeriodo = new ArrayList<>();
     }
 
     public void adicionarMateria(Materia materia) {
@@ -28,11 +29,12 @@ public class Periodo {
     }
 
     public boolean isValid(){
-        return numeroPeriodo !=null && numeroPeriodo > 0;
+
+        return numeroPeriodo != null;
     }
 
-    public Periodo(Integer idPeriodo){
-        this.idPeriodo = idPeriodo;
+    public Periodo(Integer numeroPeriodo){
+        this.numeroPeriodo = numeroPeriodo;
     }
 
     public Integer getIdPeriodo() {

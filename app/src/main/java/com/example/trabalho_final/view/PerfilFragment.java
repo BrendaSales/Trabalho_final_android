@@ -63,11 +63,6 @@ public class PerfilFragment extends Fragment {
          Usuario usuario = usuarioBLL.getUsuario(email);
 
 
-
-//        List<Usuario> usuarios = usuarioBLL.getAll();
-//
-//        Usuario usuario = usuarios.get(0);
-
         String emailString = usuario.getEmail();
         String nomeString = usuario.getNome();
 

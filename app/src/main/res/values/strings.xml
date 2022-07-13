@@ -32,6 +32,10 @@
     <string name="salas_pratica">"Sala prática"</string>
     <string name="professores">"Professores"</string>
     <string name="sair">"Sair"</string>
+    <string name="nome_do_curso">"Nome do curso"</string>
+    <string name="materias">"Matérias"</string>
+    <string name="editar_curso">"Editar Curso"</string>
+    <string name="adicionar_periodo">"Adicionar Período"</string>
 
 
     <string-array name="periodosArray">

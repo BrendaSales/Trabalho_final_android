@@ -34,25 +34,25 @@
         android:id="@+id/txt_nome_da_materia"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/horarios"
-        android:textSize="25dp"
-        android:id="@+id/txt_horarios"
-        android:layout_marginBottom="15dp"
-        android:layout_below="@+id/txt_nome_da_materia"
-        android:textStyle="bold"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/horarios"-->
+<!--        android:textSize="25dp"-->
+<!--        android:id="@+id/txt_horarios"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:layout_below="@+id/txt_nome_da_materia"-->
+<!--        android:textStyle="bold"-->
+<!--        />-->
 
-    <Spinner
-        android:id="@+id/spinner_diaDaSemana1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_horarios"
-        android:minHeight="48dp"
-        android:spinnerMode="dropdown"
-         />
+<!--    <Spinner-->
+<!--        android:id="@+id/spinner_diaDaSemana1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/txt_horarios"-->
+<!--        android:minHeight="48dp"-->
+<!--        android:spinnerMode="dropdown"-->
+<!--         />-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
         android:textSize="25dp"
         android:id="@+id/txt_salasDeAula"
         android:layout_marginBottom="15dp"
-        android:layout_below="@+id/spinner_diaDaSemana1"
+        android:layout_below="@+id/txt_nome_da_materia"
         android:textStyle="bold"
         />
 
@@ -103,35 +103,35 @@
         android:layout_toRightOf="@+id/txt_salaPratica"
         android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/professores"
-        android:textSize="25dp"
-        android:id="@+id/txt_professores"
-        android:layout_marginBottom="15dp"
-        android:layout_below="@+id/txt_salaPratica"
-        android:textStyle="bold"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/professores"-->
+<!--        android:textSize="25dp"-->
+<!--        android:id="@+id/txt_professores"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:layout_below="@+id/txt_salaPratica"-->
+<!--        android:textStyle="bold"-->
+<!--        />-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/adicionar"
-        android:layout_alignParentRight="true"
-        app:icon="@drawable/baseline_add_black_24"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:id="@+id/btn_adicionar_novo_professor"
-        android:layout_alignTop="@+id/txt_professores"/>
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/adicionar"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        app:icon="@drawable/baseline_add_black_24"-->
+<!--        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"-->
+<!--        android:id="@+id/btn_adicionar_novo_professor"-->
+<!--        android:layout_alignTop="@+id/txt_professores"/>-->
 
 
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lista_de_professores"
-        android:layout_below="@+id/txt_professores"
-        />
+<!--    <ListView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/lista_de_professores"-->
+<!--        android:layout_below="@+id/txt_professores"-->
+<!--        />-->
 
     <Button
         android:layout_width="wrap_content"
