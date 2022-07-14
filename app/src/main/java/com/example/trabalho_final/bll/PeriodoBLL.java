@@ -56,11 +56,11 @@ public class PeriodoBLL {
         return periodoDAO.getByNumero(periodo);
     }
 
-    public List<Periodo> getAll() {
+    public List<Periodo> getAllByCurso(String idCurso) {
         List<Periodo> periodos;
 
         PeriodoDAO periodoDAO = new PeriodoDAO(this.appDB);
-        periodos = periodoDAO.getAll();
+        periodos = periodoDAO.getAllByCursoId(idCurso);
 
         return periodos;
     }

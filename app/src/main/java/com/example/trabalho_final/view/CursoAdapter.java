@@ -13,22 +13,20 @@ import com.example.trabalho_final.R;
 import com.example.trabalho_final.bll.CursoBLL;
 import com.example.trabalho_final.dao.AppDB;
 import com.example.trabalho_final.dao.Curso;
+import com.example.trabalho_final.dao.Periodo;
 import com.example.trabalho_final.dao.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CursoAdapter extends BaseAdapter {
     private Context context;
     private List<Curso> cursos;
 
-
-    //fiz essa modificação para pegar o banco da pessoa que esta logada
-    public CursoAdapter(Context context,String email){
-        AppDB appDB = new AppDB(context,email);
-        CursoBLL cursoBLL = new CursoBLL(appDB);
+    public CursoAdapter(Context context, List<Curso> cursos){
 
         this.context = context;
-        this.cursos = cursoBLL.getAll();
+        this.cursos = cursos;
     }
 
 
@@ -48,22 +46,51 @@ public class CursoAdapter extends BaseAdapter {
 
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        Curso curso = this.cursos.get(position);
 
-        View cursoView = LayoutInflater.from(this.context).inflate(R.layout.adapter_curso, parent, false);
-        TextView cardViewNome = cursoView.findViewById(R.id.card_nome_do_curso);
-        TextView cardViewNomePeriodo = cursoView.findViewById(R.id.txt_card_periodo_);
-        TextView cardViewPeriodoExibido = cursoView.findViewById(R.id.card_periodo_exibido);
+        HolderView holderView;
 
-        cardViewNome.setText(curso.getNomeCurso());
-        //aqui tinha que pegar o nome ultmo item da lista periodos
-        cardViewNomePeriodo.setText(curso.getPeriodosCurso().get);
-        //aqui tinha que pergar o numero do utimo item da lista periodo
-        cardViewPeriodoExibido.setText(curso.getPeriodosCurso().get);
-        return cursoView;
+        if (convertView == null){
+            convertView = LayoutInflater.from(context).inflate(R.layout.cards_cursos_layout, parent, false);
+
+            holderView = new HolderView(convertView);
+            convertView.setTag(holderView);
+
+        }else{
+            holderView = (HolderView) convertView.getTag();
+
+        }
+
+        Curso curso = cursos.get(position);
+
+        holderView.nomeDoCurso.setText(curso.getNomeCurso());
+
+        List<Periodo> periodos = curso.getPeriodosCurso();
+
+        if (periodos.size() == 0){
+            holderView.periodo.setText("-");
+        }
+
+        Periodo periodoAtual = periodos.get(periodos.size() - 1);
+
+        holderView.periodo.setText(periodoAtual.getNumeroPeriodo() + "");
+
+
+        return convertView;
+
     }
 
-    //tive que colocar essa parte do nome para ele saber em qual banco vai guardar
+    private static class HolderView{
+        private final TextView nomeDoCurso;
+        private final TextView periodo;
+
+        public HolderView(View view){
+            nomeDoCurso = view.findViewById(R.id.card_nome_do_curso);
+            periodo = view.findViewById(R.id.card_periodo_exibido);
+
+        }
+    }
+
+
     public void updateList(String nome) {
         AppDB appDB = new AppDB(context,nome);
         CursoBLL cursoBLL = new CursoBLL(appDB);

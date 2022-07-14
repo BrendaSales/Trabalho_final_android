@@ -8,7 +8,7 @@ public class Usuario {
     private Integer idUsuario;
     private String nome;
     private String email;
-    private List<Curso> cursosUsuario;
+    private ArrayList<Curso> cursosUsuario;
 
     public Usuario(String nome, String email){
         this.nome = nome;
@@ -26,6 +26,14 @@ public class Usuario {
         this.nome = nome;
         this.email = email;
         this.cursosUsuario = new ArrayList<>();
+
+    }
+
+    public Usuario(Integer id,String nome, String email, ArrayList<Curso> cursos){
+        this.idUsuario = id;
+        this.nome = nome;
+        this.email = email;
+        this.cursosUsuario = cursos;
 
     }
 

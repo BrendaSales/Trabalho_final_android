@@ -77,7 +77,6 @@ public class PeriodoDAO {
         return result;
     }
 
-    //esse getByName retorna nome porque no periodo nao tem name
     @SuppressLint("Range")
     public Periodo getByNumero(Periodo periodo){
         Periodo result = null;
@@ -110,14 +109,18 @@ public class PeriodoDAO {
     }
 
     @SuppressLint("Range")
-    public List<Periodo> getAll() {
+    public List<Periodo> getAllByCursoId(String idCurso) {
         List<Periodo> periodos = new ArrayList<>();
         CursoDAO cursoDAO = new CursoDAO(this.appDB);
 
         SQLiteDatabase readDB = this.appDB.getReadableDatabase();
 
         try {
-            Cursor c = readDB.query(TABLE_NAME, null, null, null, null, null, null);
+
+            String clause = CURSOS_COLUMN + "=?";
+            String[] values = { idCurso + "" };
+            Cursor c = readDB.query(TABLE_NAME, null, clause, values, null, null, null);
+
             if (c.moveToFirst()) {
                 do {
                     int id = c.getInt(c.getColumnIndex(ID_COLUMN));

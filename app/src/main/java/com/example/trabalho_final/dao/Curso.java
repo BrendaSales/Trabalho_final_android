@@ -29,6 +29,15 @@ public class Curso {
         this.periodosCurso = new ArrayList<>();
 
     }
+
+    public Curso(Integer idCurso,String nome, Usuario usuario, List<Periodo> periodos){
+        this.idCurso = idCurso;
+        this.nomeCurso = nome;
+        this.usuarioCurso = usuario;
+        this.periodosCurso = periodos;
+
+    }
+
     public Curso(Integer idCurso){
         this.idCurso = idCurso;
     }

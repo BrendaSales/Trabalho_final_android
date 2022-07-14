@@ -96,7 +96,10 @@ public class CursoDAO {
                 int usuarioId = c.getInt(c.getColumnIndex(USUARIO_COLUMN));
                 Usuario usuario = usuarioDAO.getById(new Usuario(usuarioId));
 
-                result = new Curso(id,nome,usuario);
+                PeriodoDAO periodoDAO = new PeriodoDAO(appDB);
+                ArrayList<Periodo> periodos = (ArrayList<Periodo>) periodoDAO.getAllByCursoId(id+"");
+
+                result = new Curso(id,nome,usuario, periodos);
             }
         } catch (Exception e) {
             result = null;
@@ -118,12 +121,14 @@ public class CursoDAO {
                 do {
                     int id = c.getInt(c.getColumnIndex(ID_COLUMN));
                     String nome = c.getString(c.getColumnIndex(NOME_COLUMN));
-
                     int usuarioId = c.getInt(c.getColumnIndex(USUARIO_COLUMN));
                     Usuario usuario = usuarioDAO.getById(new Usuario(usuarioId));
 
+                    PeriodoDAO periodoDAO = new PeriodoDAO(appDB);
+                    ArrayList<Periodo> periodos = (ArrayList<Periodo>) periodoDAO.getAllByCursoId(id+"");
 
-                    cursos.add(new Curso(id, nome, usuario));
+
+                    cursos.add(new Curso(id, nome, usuario, periodos));
                 } while (c.moveToNext());
             }
         } catch(Exception e) {
